@@ -15,6 +15,21 @@ class HotelsController < ApplicationController
     end
   end
 
+  def show
+    @hotel = Hotel.find(params[:id])
+  end
+
+  def edit
+    @hotel = Hotel.find(params[:id])
+  end
+
+  def update
+    @hotel = Hotel.find(params[:id])
+    @hotel.update_attributes!(hotel_params)
+
+    redirect_to hotels_path
+  end
+
   private
   def hotel_params
     params.require(:hotel).permit(:name, :rating)

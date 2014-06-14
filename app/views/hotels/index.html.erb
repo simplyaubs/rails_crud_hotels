@@ -15,7 +15,7 @@
 <% @hotels.each do |hotel| %>
   <ul>
     <li>
-      <%= hotel.name %>, <%= hotel.rating %>
+      <%= link_to "#{hotel.name}", hotel_path(hotel) %>, <%= hotel.rating %>
     </li>
   </ul>
 <% end %>
