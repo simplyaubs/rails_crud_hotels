@@ -33,4 +33,21 @@ feature 'CRUD hotels' do
     expect(page).to_not have_content 'Mandalay Bay'
     expect(page).to_not have_content '4'
   end
+
+  scenario 'User can delete a hotel from list' do
+    visit '/'
+    expect(page).to have_content 'Welcome'
+    click_on 'Add a hotel'
+    fill_in 'Name', with: 'Mandalay Bay'
+    fill_in 'Rating', with: '4'
+    click_on 'Add hotel'
+    expect(page).to have_content 'Mandalay Bay'
+    expect(page).to have_content '4'
+    click_on 'Mandalay Bay'
+    expect(page).to have_content 'Mandalay Bay'
+    expect(page).to have_content '4'
+    click_on 'Delete'
+    expect(page).to_not have_content 'Mandalay Bay'
+    expect(page).to_not have_content '4'
+  end
 end
